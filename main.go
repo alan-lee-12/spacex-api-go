@@ -6,10 +6,27 @@ import (
 )
 
 func main() {
-	// Define a handler function for the GET endpoint
+	// GET /hello
 	http.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
+		// Reject if not GET
+		if r.Method != http.MethodGet {
+			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+			return
+		}
+
 		// Write a response to the client
 		fmt.Fprintf(w, "Hello, world!")
+	})
+
+	// GET all rockets
+	http.HandleFunc("/rockets", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodGet {
+			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+			return
+		}
+
+		// Make a call to SpaceX API to get all rocket data.
+
 	})
 
 	// Start the HTTP server on port 8080
