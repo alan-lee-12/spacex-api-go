@@ -19,7 +19,7 @@ func main() {
 	})
 
 	// GET all rockets
-	http.HandleFunc("/rockets", GetRocketsHandler)
+	http.HandleFunc("/rockets", getRocketsHandler)
 
 	// Start the HTTP server on port 8080
 	fmt.Println("Server started on :8080")
