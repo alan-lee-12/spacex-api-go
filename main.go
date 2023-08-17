@@ -55,7 +55,6 @@ func main() {
 			return
 		}
 		fmt.Println("API response status code:", res.StatusCode)
-		// fmt.Println("raw response body:", string(data))
 
 		// Watch out for non-2XX responses.
 		if res.StatusCode > 299 {
@@ -79,7 +78,7 @@ func main() {
 		if err != nil {
 			http.Error(w, "Error formatting JSON.", http.StatusInternalServerError)
 		}
-		fmt.Println(string(prettyJSON))
+		fmt.Println("Original res body:", string(prettyJSON))
 
 		// Write the response from the API directly to the client's response writer.
 		w.Header().Set("Content-Type", "application/json")
